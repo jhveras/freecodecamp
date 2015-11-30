@@ -10,17 +10,19 @@ function chunk(arr, size) {
   for (var i = 0; i < arr.length; i++) {
     //console.log("inside loop");
 
-    if (count <= size) {
+    tmp.push(arr[i]);
+
+    if ((count % size) === 0) {
       //console.log("inside loop if");
-      tmp.push(arr[i]);
-      count++;
-    } else {
-      //console.log("inside loop else");
       tmpArr.push(tmp);
       tmp = [];
-      tmp.push(arr[i]);
-      count = 1;      
+    } else {
+      if (i === (arr.length - 1)) {
+        tmpArr.push(tmp);
+      }
     }
+
+    count++;
   }
 
   return tmpArr;
